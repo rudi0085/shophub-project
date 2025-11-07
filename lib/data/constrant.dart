@@ -100,12 +100,23 @@ class KLiveList {
   static const String profileImage3 = 'assets/images/circle_profile3.png';
   static const String profileImage4 = 'assets/images/circle_profile4.png';
   static const String profileImage5 = 'assets/images/circle_profile5.png';
+  static const String profileImage6 = 'assets/images/circle_profile1.png';
+  static const String profileImage7 = 'assets/images/circle_profile2.png';
+  static const String profileImage8 = 'assets/images/circle_profile3.png';
+  static const String profileImage9 = 'assets/images/circle_profile4.png';
+  static const String profileImage10 = 'assets/images/circle_profile5.png';
 }
 
 class KLiveName {
-  static const String profileName1 = 'Belive Shop';
-  static const String profileName2 = 'Metamorga';
-  static const String profileName3 = 'Rulles';
-  static const String profileName4 = 'Space.co';
-  static const String profileName5 = 'Willshot';
+  static const String userName1 = 'Belive Shop';
+  static const String userName2 = 'Metamorga';
+  static const String userName3 = 'Rulles';
+  static const String userName4 = 'Space.co';
+  static const String userName5 = 'Blue Fire';
+  static const String userName6 = 'Asana';
+  static const String userName7 = 'Ellie';
+  static const String userName8 = 'Dream';
+  static const String userName9 = 'Prince.co';
+  static const String userName10 = 'Xhandss';
+  static const String userName11 = 'Void';
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shophub_project/data/constrant.dart';
 import 'package:shophub_project/pages/widget/livelist_widget.dart';
+import 'package:shophub_project/pages/widget/message_widget.dart';
 
 class MessagePage extends StatelessWidget {
   const MessagePage({super.key});
@@ -16,14 +17,32 @@ class MessagePage extends StatelessWidget {
       KLiveList.profileImage5,
     ];
     List<String> listProfile = [
-      KLiveName.profileName1,
-      KLiveName.profileName2,
-      KLiveName.profileName3,
-      KLiveName.profileName4,
-      KLiveName.profileName5,
+      KLiveName.userName1,
+      KLiveName.userName2,
+      KLiveName.userName3,
+      KLiveName.userName4,
+      KLiveName.userName5,
+      KLiveName.userName6,
+      KLiveName.userName7,
+      KLiveName.userName8,
+      KLiveName.userName9,
+      KLiveName.userName10,
+    ];
+    List<String> listPhotoProfile = [
+      KLiveList.profileImage1,
+      KLiveList.profileImage2,
+      KLiveList.profileImage3,
+      KLiveList.profileImage4,
+      KLiveList.profileImage5,
+      KLiveList.profileImage6,
+      KLiveList.profileImage7,
+      KLiveList.profileImage8,
+      KLiveList.profileImage9,
+      KLiveList.profileImage10,
     ];
 
     double heightScreen = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65),
@@ -63,53 +82,67 @@ class MessagePage extends StatelessWidget {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            // Text LiveNOw and SeeALL
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Live Now',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 14,
-                    height: 1.5,
-                    letterSpacing: 0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                GestureDetector(
-                  child: Text(
-                    'See All',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              // Text LiveNOw and SeeALL
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Live Now',
                     style: TextStyle(
-                      color: KColors.primary500,
                       fontFamily: 'Poppins',
-                      fontSize: 12,
+                      fontSize: 14,
                       height: 1.5,
                       letterSpacing: 0,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ),
-              ],
-            ),
+                  GestureDetector(
+                    child: Text(
+                      'See All',
+                      style: TextStyle(
+                        color: KColors.primary500,
+                        fontFamily: 'Poppins',
+                        fontSize: 12,
+                        height: 1.5,
+                        letterSpacing: 0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
-            SizedBox(height: 16),
-            // Live List
-            Row(
-              children: [
-                ...List.generate(listAssets.length, (index) {
-                  return LivelistWidget(
-                    assets: listAssets.elementAt(index),
-                    profileName: listProfile.elementAt(index),
-                  );
-                }),
-              ],
-            ),
-          ],
+              SizedBox(height: 16),
+              // Live List
+              Row(
+                children: [
+                  ...List.generate(listAssets.length, (index) {
+                    return LivelistWidget(
+                      assets: listAssets.elementAt(index),
+                      profileName: listProfile.elementAt(index),
+                    );
+                  }),
+                ],
+              ),
+              SizedBox(height: 24),
+              // Message Widget
+              Column(
+                children: [
+                  ...List.generate(listProfile.length, (index) {
+                    return MessageWidget(
+                      profileName: listProfile.elementAt(index),
+                      photoProfile: listPhotoProfile.elementAt(index),
+                    );
+                  }),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
