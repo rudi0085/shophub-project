@@ -139,6 +139,7 @@ class ProfilePage extends StatelessWidget {
                           child: Icon(
                             Iconsax.box_time,
                             color: KColors.primary500,
+                            size: 20,
                           ),
                         ),
                       ),
@@ -173,8 +174,9 @@ class ProfilePage extends StatelessWidget {
                         ),
                         child: Center(
                           child: Icon(
-                            Iconsax.box_time,
+                            Iconsax.truck_fast,
                             color: KColors.primary500,
+                            size: 20,
                           ),
                         ),
                       ),
@@ -182,7 +184,7 @@ class ProfilePage extends StatelessWidget {
                       SizedBox(
                         width: 78,
                         child: Text(
-                          'Waiting for Payment',
+                          'Product Packaged',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Poppins',
@@ -208,8 +210,9 @@ class ProfilePage extends StatelessWidget {
                         ),
                         child: Center(
                           child: Icon(
-                            Iconsax.box_time,
+                            Iconsax.receive_square,
                             color: KColors.primary500,
+                            size: 20,
                           ),
                         ),
                       ),
@@ -217,7 +220,7 @@ class ProfilePage extends StatelessWidget {
                       SizedBox(
                         width: 78,
                         child: Text(
-                          'Waiting for Payment',
+                          'Product Received',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Poppins',
@@ -243,7 +246,8 @@ class ProfilePage extends StatelessWidget {
                         ),
                         child: Center(
                           child: Icon(
-                            Iconsax.box_time,
+                            Iconsax.box_tick,
+                            size: 24,
                             color: KColors.primary500,
                           ),
                         ),
@@ -252,7 +256,7 @@ class ProfilePage extends StatelessWidget {
                       SizedBox(
                         width: 78,
                         child: Text(
-                          'Waiting for Payment',
+                          'Product Completed',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Poppins',
