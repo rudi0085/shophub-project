@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1012161199605",
+    "project_id": "flutter-pro-firebase-cf426",
+    "storage_bucket": "flutter-pro-firebase-cf426.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012161199605:android:e55284d48fcc3e6856b4bc",
+        "android_client_info": {
+          "package_name": "com.example.shophub_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvdSa0orELyZpaNzA6mX3qMxXazZpyTaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
