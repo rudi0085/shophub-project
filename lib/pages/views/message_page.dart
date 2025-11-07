@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shophub_project/data/constrant.dart';
 import 'package:shophub_project/pages/widget/livelist_widget.dart';
@@ -24,7 +23,6 @@ class MessagePage extends StatelessWidget {
       KLiveName.profileName5,
     ];
 
-    double widthScreen = MediaQuery.of(context).size.width;
     double heightScreen = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: PreferredSize(

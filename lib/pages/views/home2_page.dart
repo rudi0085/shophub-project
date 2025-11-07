@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shophub_project/data/constrant.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class Home2Page extends StatelessWidget {
   const Home2Page({super.key});
@@ -10,7 +9,7 @@ class Home2Page extends StatelessWidget {
     double widthScreen = MediaQuery.of(context).size.width;
     double heightScreen = MediaQuery.of(context).size.height;
     TextEditingController controllerSearch = TextEditingController();
-    final PanelController panelController = PanelController();
+
     return Scaffold(
       backgroundColor: KColors.primary500,
       appBar: PreferredSize(
