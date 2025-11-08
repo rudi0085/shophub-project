@@ -1,16 +1,39 @@
-# shophub_project
+## Deskripsi
+Shophub adalah aplikasi mobile e-commerce yang terinspirasi dari Shopee, dikembangkan menggunakan Flutter. Proyek ini bertujuan untuk menyediakan pengalaman belanja online yang modern, responsif, dan mudah digunakan, lengkap dengan fitur kategori, pencarian produk, notifikasi, dan UI yang menarik.
 
-A new Flutter project.
+## Teknologi yang Digunakan
+- **Flutter**: Framework utama untuk pengembangan aplikasi mobile multiplatform (Android, iOS, Web, Desktop).
+- **Dart**: Bahasa pemrograman utama untuk Flutter.
+- **Firebase**: Untuk autentikasi, database, dan notifikasi (jika diaktifkan).
+- **Provider/ValueNotifier**: Untuk state management.
+- **Iconsax**: Library ikon modern untuk tampilan UI.
+- **sliding_up_panel**: Untuk panel interaktif di UI.
+- **SVG & Asset Images**: Untuk ilustrasi dan ikon custom.
 
-## Getting Started
+## Fitur Utama
+- UI Shopee-like: Kategori, produk populer, search bar, notifikasi, dan card produk.
+- Responsive Design: Tampilan menyesuaikan berbagai ukuran layar.
+- State Management: Menggunakan ValueNotifier/Provider.
+- Integrasi Firebase : Login, register, dan notifikasi.
+- Sliding Up Panel: Panel interaktif untuk filter atau detail tambahan.
 
-This project is a starting point for a Flutter application.
+## Cara Menjalankan Proyek
+1. Clone repository ini:
+	```bash
+	git clone https://github.com/rudi0085/shophub-project.git
+	```
+2. Buka folder project di VS Code atau IDE lain.
+3. Jalankan perintah berikut untuk install dependencies:
+	```bash
+	flutter pub get
+	```
+4. Jalankan aplikasi:
+	```bash
+	flutter run
+	```
 
-A few resources to get you started if this is your first Flutter project:
+## Kontribusi
+Silakan fork dan pull request jika ingin berkontribusi atau mengembangkan fitur baru.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Kontak
+Untuk pertanyaan atau kolaborasi, hubungi [rudi0085](https://github.com/rudi0085).
