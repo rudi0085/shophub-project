@@ -37,7 +37,7 @@ Silakan fork dan pull request jika ingin berkontribusi atau mengembangkan fitur 
 
 ## Screenshot UI
 1. Onboarding Page
-![alt text](image.png)
+(![alt text](image.png))
 2. Login Page
 ![alt text](image-1.png)
 
