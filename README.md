@@ -33,11 +33,15 @@ Shophub adalah aplikasi mobile e-commerce yang terinspirasi dari Shopee, dikemba
 	```
 
 ## Kontribusi
+Thanks for Afifhanifudin for this UI Design, so I can convert to Flutter UI Apps.
 Silakan fork dan pull request jika ingin berkontribusi atau mengembangkan fitur baru.
 
 ## Screenshot UI
 1. Onboarding Page, Login Page, Register Page, Forgot Password
 (![alt text](image.png)) ![alt text](image-1.png) ![alt text](image-2.png) ![alt text](image-3.png)
+
+2. Main Page
+![alt text](image-4.png)
 
 ## Kontak
 Untuk pertanyaan atau kolaborasi, hubungi [rudi0085](https://github.com/rudi0085).
