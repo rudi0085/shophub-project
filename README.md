@@ -36,10 +36,8 @@ Shophub adalah aplikasi mobile e-commerce yang terinspirasi dari Shopee, dikemba
 Silakan fork dan pull request jika ingin berkontribusi atau mengembangkan fitur baru.
 
 ## Screenshot UI
-1. Onboarding Page
-(![alt text](image.png))
-2. Login Page
-![alt text](image-1.png)
+1. Onboarding Page, Login Page, Register Page, Forgot Password
+(![alt text](image.png)) ![alt text](image-1.png) ![alt text](image-2.png) ![alt text](image-3.png)
 
 ## Kontak
 Untuk pertanyaan atau kolaborasi, hubungi [rudi0085](https://github.com/rudi0085).
