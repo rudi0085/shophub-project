@@ -41,50 +41,27 @@ class MessagePage extends StatelessWidget {
       KLiveList.profileImage10,
     ];
 
-    double heightScreen = MediaQuery.of(context).size.height;
-
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(65),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Message',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 16,
-                    height: 1.5,
-                    letterSpacing: 0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Container(
-                  height: heightScreen * 0.04,
-                  width: heightScreen * 0.04,
-                  decoration: BoxDecoration(
-                    color: KColors.neutral50,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Center(
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Iconsax.search_normal_1_copy, size: 20),
-                    ),
-                  ),
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+          centerTitle: false,
+          titleSpacing: 0,
+          title: Text(
+            'Message',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 16,
+              height: 1.5,
+              letterSpacing: 0,
+              fontWeight: FontWeight.w500,
             ),
           ),
+          actions: [Icon(Iconsax.search_normal_1_copy)],
         ),
-      ),
 
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+        body: SingleChildScrollView(
           child: Column(
             children: [
               // Text LiveNOw and SeeALL

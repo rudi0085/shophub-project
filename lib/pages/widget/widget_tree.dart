@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shophub_project/data/constrant.dart';
 import 'package:shophub_project/data/notifiers.dart';
-import 'package:shophub_project/pages/views/home2_page.dart';
+
 import 'package:shophub_project/pages/views/home_page.dart';
 import 'package:shophub_project/pages/views/message_page.dart';
 import 'package:shophub_project/pages/views/profile_page.dart';
+import 'package:shophub_project/pages/views/whistlist_page.dart';
 import 'package:shophub_project/pages/widget/navbar_widget.dart';
 
-List<Widget> pages = [HomePage(), Home2Page(), MessagePage(), ProfilePage()];
+List<Widget> pages = [
+  HomePage(),
+  WhistlistPage(),
+  MessagePage(),
+  ProfilePage(),
+];
 
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
