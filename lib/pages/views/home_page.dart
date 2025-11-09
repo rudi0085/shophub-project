@@ -1,15 +1,48 @@
 import 'package:flutter/material.dart';
 
 import 'package:shophub_project/data/constrant.dart';
+import 'package:shophub_project/pages/widget/product_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+TextEditingController controllerSearch = TextEditingController();
+List<String> allProducts = [
+  'Headphone Nirkabel Extra Full Bass',
+  'Bluetooth Headphone Wireless Earbud',
+  'Headphone Nirkabel Extra Full Bass White',
+  'Bluetooth Headphone Wireless Earbud',
+  // Tambahkan produk lain sesuai kebutuhan
+];
+List<String> filteredProducts = [];
+
+class _HomePageState extends State<HomePage> {
+  void initState() {
+    super.initState();
+    filteredProducts = allProducts;
+    controllerSearch.addListener(_onSearchChanged);
+  }
+
+  void _onSearchChanged() {
+    setState(() {
+      filteredProducts = allProducts
+          .where(
+            (product) => product.toLowerCase().contains(
+              controllerSearch.text.toLowerCase(),
+            ),
+          )
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     double widthScreen = MediaQuery.of(context).size.width;
     double heightScreen = MediaQuery.of(context).size.height;
-    TextEditingController controllerSearch = TextEditingController();
 
     return Scaffold(
       backgroundColor: KColors.neutral50,
@@ -316,327 +349,9 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             // Headphone
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.asset('assets/images/headset.png'),
-                                  Text('Headphone Nirkabel Extra Full Bass'),
-                                  SizedBox(height: 4),
-                                  // Ulasan
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        size: 15,
-                                        color: KColors.yellow,
-                                      ),
-
-                                      SizedBox(width: 4),
-                                      Text(
-                                        '4.5',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      SizedBox(width: 8),
-                                      Container(
-                                        height: 15,
-                                        width: 1,
-                                        color: KColors.neutral300,
-                                      ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        '1540 Sold',
-                                        style: TextStyle(
-                                          color: KColors.neutral500,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 12),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '\$179',
-                                        style: TextStyle(
-                                          color: KColors.primary500,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 16,
-                                          height: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text(
-                                        '\$234',
-                                        style: TextStyle(
-                                          color: KColors.neutral600,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          height: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
+                            ProductWidget(),
                             SizedBox(width: 16),
-                            // Bluetooth Headphone
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.asset('assets/images/bHeadphone.png'),
-                                  Text('Bluetooth Headphone Wireless Earbud'),
-                                  SizedBox(height: 4),
-                                  // Ulasan
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        size: 15,
-                                        color: KColors.yellow,
-                                      ),
-
-                                      SizedBox(width: 4),
-                                      Text(
-                                        '5.0',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      SizedBox(width: 8),
-                                      Container(
-                                        height: 15,
-                                        width: 1,
-                                        color: KColors.neutral300,
-                                      ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        '1540 Sold',
-                                        style: TextStyle(
-                                          color: KColors.neutral500,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 12),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '\$99',
-                                        style: TextStyle(
-                                          color: KColors.primary500,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 16,
-                                          height: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text(
-                                        '\$179',
-                                        style: TextStyle(
-                                          color: KColors.neutral600,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          height: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        // HeadphoneWhite Bluethoot Black
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            //headphone White
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/headphoneWhite.png',
-                                  ),
-                                  Text(
-                                    'Headphone Nirkabel Extra Full Bass White',
-                                  ),
-                                  SizedBox(height: 4),
-                                  // Ulasan
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        size: 15,
-                                        color: KColors.yellow,
-                                      ),
-
-                                      SizedBox(width: 4),
-                                      Text(
-                                        '4.5',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      SizedBox(width: 8),
-                                      Container(
-                                        height: 15,
-                                        width: 1,
-                                        color: KColors.neutral300,
-                                      ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        '1540 Sold',
-                                        style: TextStyle(
-                                          color: KColors.neutral500,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 12),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '\$179',
-                                        style: TextStyle(
-                                          color: KColors.primary500,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 16,
-                                          height: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text(
-                                        '\$234',
-                                        style: TextStyle(
-                                          color: KColors.neutral600,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          height: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 16),
-                            // Bluetooth Headphone Black
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/bluetoothblack.png',
-                                  ),
-                                  Text('Bluetooth Headphone Wireless Earbud'),
-                                  SizedBox(height: 4),
-                                  // Ulasan
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        size: 15,
-                                        color: KColors.yellow,
-                                      ),
-
-                                      SizedBox(width: 4),
-                                      Text(
-                                        '5.0',
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      SizedBox(width: 8),
-                                      Container(
-                                        height: 15,
-                                        width: 1,
-                                        color: KColors.neutral300,
-                                      ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        '1540 Sold',
-                                        style: TextStyle(
-                                          color: KColors.neutral500,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 12),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '\$179',
-                                        style: TextStyle(
-                                          color: KColors.primary500,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 16,
-                                          height: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text(
-                                        '\$234',
-                                        style: TextStyle(
-                                          color: KColors.neutral600,
-                                          fontFamily: 'Poppins',
-                                          fontSize: 10,
-                                          height: 1.5,
-                                          fontWeight: FontWeight.w500,
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
+                            ProductWidget(),
                           ],
                         ),
                       ],
