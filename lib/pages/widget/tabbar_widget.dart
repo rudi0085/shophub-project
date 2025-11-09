@@ -15,7 +15,18 @@ class TabbarWidget extends StatelessWidget {
           margin: EdgeInsets.all(12),
           child: Row(
             children: [
-              Image.asset('assets/images/headset.png', height: 80, width: 80),
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Image.asset(
+                  'assets/images/headset.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
