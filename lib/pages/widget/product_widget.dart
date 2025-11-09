@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:shophub_project/data/constrant.dart';
 
 class ProductWidget extends StatelessWidget {
-  const ProductWidget({super.key});
-
+  const ProductWidget({
+    super.key,
+    required this.productImage,
+    required this.productName,
+  });
+  final String productImage;
+  final String productName;
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset('assets/images/headset.png'),
-          Text('Headphone Nirkabel Extra Full Bass'),
+          Image.asset(productImage),
+          Text(productName),
           SizedBox(height: 4),
           // Ulasan
           Row(

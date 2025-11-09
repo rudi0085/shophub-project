@@ -120,3 +120,18 @@ class KLiveName {
   static const String userName10 = 'Xhandss';
   static const String userName11 = 'Void';
 }
+
+class KProductImage {
+  static const String headset = 'assets/images/headset.png';
+  static const String headphoneWhite = 'assets/images/headphoneWhite.png';
+  static const String bluetoothHeadphone = 'assets/images/bHeadphone.png';
+  static const String bluetoothHeadphoneBlack =
+      'assets/images/bluetoothblack.png';
+}
+
+class KProductName {
+  static const String headset = 'Headphone Nirkabel Extra Full Bass';
+  static const String headphoneWhite = 'Headphone White Bluetooth';
+  static const String bluetoothHeadphone = 'Bluetooth Headphone';
+  static const String bluetoothHeadphoneBlack = 'Bluetooth Headphone Black';
+}

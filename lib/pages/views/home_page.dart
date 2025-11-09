@@ -11,34 +11,20 @@ class HomePage extends StatefulWidget {
 }
 
 TextEditingController controllerSearch = TextEditingController();
-List<String> allProducts = [
-  'Headphone Nirkabel Extra Full Bass',
-  'Bluetooth Headphone Wireless Earbud',
-  'Headphone Nirkabel Extra Full Bass White',
-  'Bluetooth Headphone Wireless Earbud',
-  // Tambahkan produk lain sesuai kebutuhan
+List<String> productName = [
+  KProductName.headset,
+  KProductName.headphoneWhite,
+  KProductName.bluetoothHeadphoneBlack,
+  KProductName.bluetoothHeadphone,
 ];
-List<String> filteredProducts = [];
+List<String> productImage = [
+  KProductImage.headset,
+  KProductImage.headphoneWhite,
+  KProductImage.bluetoothHeadphoneBlack,
+  KProductImage.bluetoothHeadphone,
+];
 
 class _HomePageState extends State<HomePage> {
-  void initState() {
-    super.initState();
-    filteredProducts = allProducts;
-    controllerSearch.addListener(_onSearchChanged);
-  }
-
-  void _onSearchChanged() {
-    setState(() {
-      filteredProducts = allProducts
-          .where(
-            (product) => product.toLowerCase().contains(
-              controllerSearch.text.toLowerCase(),
-            ),
-          )
-          .toList();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     double widthScreen = MediaQuery.of(context).size.width;
@@ -349,9 +335,15 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             // Headphone
-                            ProductWidget(),
+                            ProductWidget(
+                              productImage: productImage.elementAt(0),
+                              productName: productName.elementAt(0),
+                            ),
                             SizedBox(width: 16),
-                            ProductWidget(),
+                            ProductWidget(
+                              productImage: productImage.elementAt(1),
+                              productName: productName.elementAt(1),
+                            ),
                           ],
                         ),
                       ],
