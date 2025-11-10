@@ -10,21 +10,60 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-TextEditingController controllerSearch = TextEditingController();
-List<String> productName = [
-  KProductName.headset,
-  KProductName.headphoneWhite,
-  KProductName.bluetoothHeadphoneBlack,
-  KProductName.bluetoothHeadphone,
-];
-List<String> productImage = [
-  KProductImage.headset,
-  KProductImage.headphoneWhite,
-  KProductImage.bluetoothHeadphoneBlack,
-  KProductImage.bluetoothHeadphone,
-];
-
 class _HomePageState extends State<HomePage> {
+  TextEditingController controllerSearch = TextEditingController();
+
+  List<String> allProductNames = [
+    KProductName.headset,
+    KProductName.headphoneWhite,
+    KProductName.bluetoothHeadphoneBlack,
+    KProductName.bluetoothHeadphone,
+  ];
+
+  List<String> allProductImages = [
+    KProductImage.headset,
+    KProductImage.headphoneWhite,
+    KProductImage.bluetoothHeadphoneBlack,
+    KProductImage.bluetoothHeadphone,
+  ];
+
+  List<String> filteredProductNames = [];
+  List<String> filteredProductImages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredProductNames = allProductNames;
+    filteredProductImages = allProductImages;
+    controllerSearch.addListener(_onSearchChanged);
+  }
+
+  void _onSearchChanged() {
+    setState(() {
+      if (controllerSearch.text.isEmpty) {
+        filteredProductNames = allProductNames;
+        filteredProductImages = allProductImages;
+      } else {
+        filteredProductNames = [];
+        filteredProductImages = [];
+        for (int i = 0; i < allProductNames.length; i++) {
+          if (allProductNames[i].toLowerCase().contains(
+            controllerSearch.text.toLowerCase(),
+          )) {
+            filteredProductNames.add(allProductNames[i]);
+            filteredProductImages.add(allProductImages[i]);
+          }
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    controllerSearch.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double widthScreen = MediaQuery.of(context).size.width;
@@ -326,28 +365,42 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   SizedBox(height: 17),
-                  // Popular Product
-                  SizedBox(
-                    child: Column(
-                      children: [
-                        // Row1 Headphone and Bluetooth Blue
-                        Row(
+                  // Popular Product - ListView.builder
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: (filteredProductNames.length / 2).ceil(),
+                    itemBuilder: (context, index) {
+                      int firstIndex = index * 2;
+                      int secondIndex = firstIndex + 1;
+
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // Headphone
-                            ProductWidget(
-                              productImage: productImage.elementAt(0),
-                              productName: productName.elementAt(0),
+                            Expanded(
+                              child: ProductWidget(
+                                productImage: filteredProductImages[firstIndex],
+                                productName: filteredProductNames[firstIndex],
+                              ),
                             ),
-                            SizedBox(width: 16),
-                            ProductWidget(
-                              productImage: productImage.elementAt(1),
-                              productName: productName.elementAt(1),
-                            ),
+                            if (secondIndex < filteredProductNames.length) ...[
+                              SizedBox(width: 16),
+                              Expanded(
+                                child: ProductWidget(
+                                  productImage:
+                                      filteredProductImages[secondIndex],
+                                  productName:
+                                      filteredProductNames[secondIndex],
+                                ),
+                              ),
+                            ] else
+                              Expanded(child: SizedBox()),
                           ],
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),

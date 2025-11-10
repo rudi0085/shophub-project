@@ -41,85 +41,91 @@ class MessagePage extends StatelessWidget {
       KLiveList.profileImage10,
     ];
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: true,
-          centerTitle: false,
-          titleSpacing: 0,
-          title: Text(
-            'Message',
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 16,
-              height: 1.5,
-              letterSpacing: 0,
-              fontWeight: FontWeight.w500,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        centerTitle: false,
+        titleSpacing: 16,
+        title: Text(
+          'Message',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: 16,
+            height: 1.5,
+            letterSpacing: 0,
+            fontWeight: FontWeight.w500,
           ),
-          actions: [Icon(Iconsax.search_normal_1_copy)],
         ),
-
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Text LiveNOw and SeeALL
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Live Now',
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Icon(Iconsax.search_normal_1_copy),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: ListView(
+          children: [
+            // Text LiveNOw and SeeALL
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Live Now',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 14,
+                    height: 1.5,
+                    letterSpacing: 0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                GestureDetector(
+                  child: Text(
+                    'See All',
                     style: TextStyle(
+                      color: KColors.primary500,
                       fontFamily: 'Poppins',
-                      fontSize: 14,
+                      fontSize: 12,
                       height: 1.5,
                       letterSpacing: 0,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                  GestureDetector(
-                    child: Text(
-                      'See All',
-                      style: TextStyle(
-                        color: KColors.primary500,
-                        fontFamily: 'Poppins',
-                        fontSize: 12,
-                        height: 1.5,
-                        letterSpacing: 0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
+            ),
 
-              SizedBox(height: 16),
-              // Live List
-              Row(
-                children: [
-                  ...List.generate(listAssets.length, (index) {
-                    return LivelistWidget(
-                      assets: listAssets.elementAt(index),
-                      profileName: listProfile.elementAt(index),
-                    );
-                  }),
-                ],
+            SizedBox(height: 16),
+            // Live List
+            SizedBox(
+              height: 120,
+              child: ListView.builder(
+                itemCount: listAssets.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return LivelistWidget(
+                    assets: listAssets.elementAt(index),
+                    profileName: listProfile.elementAt(index),
+                  );
+                },
               ),
-              SizedBox(height: 24),
-              // Message Widget
-              Column(
-                children: [
-                  ...List.generate(listProfile.length, (index) {
-                    return MessageWidget(
-                      profileName: listProfile.elementAt(index),
-                      photoProfile: listPhotoProfile.elementAt(index),
-                    );
-                  }),
-                ],
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 24),
+            // Message Widget
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: listProfile.length,
+              itemBuilder: (context, index) {
+                return MessageWidget(
+                  profileName: listProfile.elementAt(index),
+                  photoProfile: listPhotoProfile.elementAt(index),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
