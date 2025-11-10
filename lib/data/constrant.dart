@@ -122,11 +122,13 @@ class KLiveName {
 }
 
 class KProductImage {
-  static const String headset = 'assets/images/headset.png';
-  static const String headphoneWhite = 'assets/images/headphoneWhite.png';
-  static const String bluetoothHeadphone = 'assets/images/bHeadphone.png';
+  static const String headset = 'assets/images/products/headset.png';
+  static const String headphoneWhite =
+      'assets/images/products/headphoneWhite.png';
+  static const String bluetoothHeadphone =
+      'assets/images/products/bHeadphone.png';
   static const String bluetoothHeadphoneBlack =
-      'assets/images/bluetoothblack.png';
+      'assets/images/products/bluetoothblack.png';
 }
 
 class KProductName {

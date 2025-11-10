@@ -365,7 +365,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
             // Dark Mode
             Padding(
-              padding: const EdgeInsets.only(top: 16),
+              padding: const EdgeInsets.only(top: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

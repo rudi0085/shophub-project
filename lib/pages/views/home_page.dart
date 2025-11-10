@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:shophub_project/data/constrant.dart';
 import 'package:shophub_project/pages/widget/product_widget.dart';
+import 'package:shophub_project/pages/widget/search_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,8 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController controllerSearch = TextEditingController();
-
   List<String> allProductNames = [
     KProductName.headset,
     KProductName.headphoneWhite,
@@ -29,40 +28,6 @@ class _HomePageState extends State<HomePage> {
 
   List<String> filteredProductNames = [];
   List<String> filteredProductImages = [];
-
-  @override
-  void initState() {
-    super.initState();
-    filteredProductNames = allProductNames;
-    filteredProductImages = allProductImages;
-    controllerSearch.addListener(_onSearchChanged);
-  }
-
-  void _onSearchChanged() {
-    setState(() {
-      if (controllerSearch.text.isEmpty) {
-        filteredProductNames = allProductNames;
-        filteredProductImages = allProductImages;
-      } else {
-        filteredProductNames = [];
-        filteredProductImages = [];
-        for (int i = 0; i < allProductNames.length; i++) {
-          if (allProductNames[i].toLowerCase().contains(
-            controllerSearch.text.toLowerCase(),
-          )) {
-            filteredProductNames.add(allProductNames[i]);
-            filteredProductImages.add(allProductImages[i]);
-          }
-        }
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    controllerSearch.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,27 +49,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: TextField(
-                      controller: controllerSearch,
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        hintStyle: TextStyle(
-                          color: KColors.neutral300,
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          size: 24,
-                          color: KColors.neutral300,
-                        ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 12),
-                        border: InputBorder.none,
-
-                        isDense: true,
-                      ),
-                    ),
+                    child: SearchWidget(),
                   ),
                 ),
                 SizedBox(width: 16),
@@ -369,7 +314,7 @@ class _HomePageState extends State<HomePage> {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: (filteredProductNames.length / 2).ceil(),
+                    itemCount: (allProductNames.length / 2).ceil(),
                     itemBuilder: (context, index) {
                       int firstIndex = index * 2;
                       int secondIndex = firstIndex + 1;
@@ -381,18 +326,16 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Expanded(
                               child: ProductWidget(
-                                productImage: filteredProductImages[firstIndex],
-                                productName: filteredProductNames[firstIndex],
+                                productImage: allProductImages[firstIndex],
+                                productName: allProductNames[firstIndex],
                               ),
                             ),
-                            if (secondIndex < filteredProductNames.length) ...[
+                            if (secondIndex < allProductNames.length) ...[
                               SizedBox(width: 16),
                               Expanded(
                                 child: ProductWidget(
-                                  productImage:
-                                      filteredProductImages[secondIndex],
-                                  productName:
-                                      filteredProductNames[secondIndex],
+                                  productImage: allProductImages[secondIndex],
+                                  productName: allProductNames[secondIndex],
                                 ),
                               ),
                             ] else
