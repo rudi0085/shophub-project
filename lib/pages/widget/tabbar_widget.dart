@@ -3,8 +3,10 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shophub_project/data/constrant.dart';
 
 class TabbarWidget extends StatelessWidget {
-  const TabbarWidget({super.key});
+  const TabbarWidget({super.key, required this.name, required this.asset});
 
+  final String name;
+  final String asset;
   @override
   Widget build(BuildContext context) {
     double widthScreen = MediaQuery.of(context).size.width;
@@ -21,16 +23,13 @@ class TabbarWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Image.asset(
-                  'assets/images/headset.png',
-                  fit: BoxFit.cover,
-                ),
+                child: Image.asset(asset, fit: BoxFit.cover),
               ),
               SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Headphone Nirkabel Extra Full Bass'),
+                  Text(name),
                   SizedBox(height: 4),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
