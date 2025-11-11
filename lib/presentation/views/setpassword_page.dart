@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shophub_project/data/constrant.dart';
-import 'package:shophub_project/pages/views/login_page.dart';
+import 'package:shophub_project/presentation/views/login_page.dart';
 
 class SetpasswordPage extends StatefulWidget {
   const SetpasswordPage({super.key});

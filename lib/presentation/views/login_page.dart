@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shophub_project/app/mobile/auth_service.dart';
 import 'package:shophub_project/data/constrant.dart';
-import 'package:shophub_project/pages/views/forgotpass_page.dart';
-import 'package:shophub_project/pages/views/signup_page.dart.dart';
-import 'package:shophub_project/pages/widget/widget_tree.dart';
+import 'package:shophub_project/presentation/views/forgotpass_page.dart';
+import 'package:shophub_project/presentation/views/signup_page.dart.dart';
+import 'package:shophub_project/presentation/widget/widget_tree.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

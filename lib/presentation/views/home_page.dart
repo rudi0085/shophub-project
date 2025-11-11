@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:shophub_project/data/constrant.dart';
+import 'package:shophub_project/pages/views/search_page.dart';
 import 'package:shophub_project/presentation/widget/product_widget.dart';
 import 'package:shophub_project/presentation/widget/search_widget.dart';
 
@@ -47,7 +48,28 @@ class _HomePageState extends State<HomePage> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SearchWidget()),
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  SearchWidget(),
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                                // Slide dari bawah
+                                const begin = Offset(0.0, 1.0);
+                                const end = Offset.zero;
+                                const curve = Curves.easeInOut;
+
+                                var tween = Tween(
+                                  begin: begin,
+                                  end: end,
+                                ).chain(CurveTween(curve: curve));
+
+                                return SlideTransition(
+                                  position: animation.drive(tween),
+                                  child: child,
+                                );
+                              },
+                        ),
                       );
                     },
                     borderRadius: BorderRadius.circular(8),
@@ -57,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: IgnorePointer(
-                        child: TextField(
+                        child: TextFormField(
                           controller: controllerSearch,
                           decoration: InputDecoration(
                             hintText: 'Search',

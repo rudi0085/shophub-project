@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shophub_project/app/mobile/auth_service.dart';
-import 'package:shophub_project/pages/views/home_page.dart';
-import 'package:shophub_project/pages/views/login_page.dart';
+import 'package:shophub_project/presentation/views/home_page.dart';
+import 'package:shophub_project/presentation/views/login_page.dart';
 
 class AuthLayout extends StatelessWidget {
   const AuthLayout({super.key, this.pageIfNotConnected});

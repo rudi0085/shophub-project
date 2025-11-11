@@ -376,8 +376,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text('Dark Mode'),
                     ],
                   ),
-
-                  Image.asset('assets/images/icons/arrow-right.png'),
+                  Switch.adaptive(
+                    value: isSwitched,
+                    onChanged: (bool value) {
+                      setState(() {
+                        isSwitched = value;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
@@ -398,15 +404,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text('Notifications'),
                     ],
                   ),
-
-                  Switch.adaptive(
-                    value: isSwitched,
-                    onChanged: (bool value) {
-                      setState(() {
-                        isSwitched = value;
-                      });
-                    },
-                  ),
+                  Image.asset('assets/images/icons/arrow-right.png'),
                 ],
               ),
             ),
@@ -424,7 +422,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text('Language'),
                     ],
                   ),
-
                   Image.asset('assets/images/icons/arrow-right.png'),
                 ],
               ),
