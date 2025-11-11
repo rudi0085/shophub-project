@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shophub_project/data/constrant.dart';
+import 'package:shophub_project/pages/widget/widget_tree.dart';
 import 'package:shophub_project/presentation/components/search_history_component.dart';
+import 'package:shophub_project/presentation/components/trending_search_component.dart';
 import 'package:shophub_project/presentation/views/home_page.dart';
 
 class SearchWidget extends StatefulWidget {
@@ -12,16 +14,29 @@ class SearchWidget extends StatefulWidget {
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
+  final TextEditingController controllerSearch = TextEditingController();
+
   List<String> allProductImages = [
     KProductImage.headset,
     KProductImage.headphoneWhite,
     KProductImage.bluetoothHeadphoneBlack,
     KProductImage.bluetoothHeadphone,
   ];
+  List<String> allProductNames = [
+    KProductName.headset,
+    KProductName.headphoneWhite,
+    KProductName.bluetoothHeadphoneBlack,
+    KProductName.bluetoothHeadphone,
+  ];
+
+  @override
+  void dispose() {
+    controllerSearch.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controllerSearch = TextEditingController();
     final heightScreen = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: PreferredSize(
@@ -43,12 +58,12 @@ class _SearchWidgetState extends State<SearchWidget> {
                         setState(() {});
                       },
                       onEditingComplete: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           PageRouteBuilder(
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>
-                                    HomePage(),
+                                    WidgetTree(),
                             transitionsBuilder:
                                 (
                                   context,
@@ -113,60 +128,107 @@ class _SearchWidgetState extends State<SearchWidget> {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            SizedBox(
-              height: heightScreen * 0.22,
-              child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) => SearchHistoryComponent(),
-              ),
-            ),
-            SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Last Seen',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 14,
-                    height: 1.5,
-                    letterSpacing: 0,
-                    fontWeight: FontWeight.w600,
-                  ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: heightScreen * 0.22,
+                child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (context, index) => SearchHistoryComponent(),
                 ),
-                Text(
-                  'See All',
-                  style: TextStyle(
-                    color: KColors.primary500,
-                    fontFamily: 'Poppins',
-                    fontSize: 12,
-                    height: 1.5,
-                    letterSpacing: 0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              height: 80,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: allProductImages.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 13),
-                    child: Image.asset(allProductImages.elementAt(index)),
-                  );
-                },
               ),
-            ),
-          ],
+              SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Last Seen',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
+                      height: 1.5,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    'See All',
+                    style: TextStyle(
+                      color: KColors.primary500,
+                      fontFamily: 'Poppins',
+                      fontSize: 12,
+                      height: 1.5,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                height: 80,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: allProductImages.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 13),
+                      child: Image.asset(allProductImages.elementAt(index)),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Trending',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
+                      height: 1.5,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    'See All',
+                    style: TextStyle(
+                      color: KColors.primary500,
+                      fontFamily: 'Poppins',
+                      fontSize: 12,
+                      height: 1.5,
+                      letterSpacing: 0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Wrap(
+                  alignment: WrapAlignment.start,
+                  crossAxisAlignment: WrapCrossAlignment.start,
+                  runAlignment: WrapAlignment.start,
+                  spacing: 16,
+                  runSpacing: 16,
+                  children: [
+                    TrendingSearchComponent(name: 'Sneakers'),
+                    TrendingSearchComponent(name: 'Nike Air Max'),
+                    TrendingSearchComponent(name: 'Jeans'),
+                    TrendingSearchComponent(name: 'Adventure'),
+                    TrendingSearchComponent(name: 'Headphone'),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

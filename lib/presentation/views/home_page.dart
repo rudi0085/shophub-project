@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         PageRouteBuilder(
                           pageBuilder:
