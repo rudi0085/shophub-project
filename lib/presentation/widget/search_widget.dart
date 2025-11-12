@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shophub_project/data/constrant.dart';
+import 'package:shophub_project/data/search_history_manager.dart';
 import 'package:shophub_project/pages/widget/widget_tree.dart';
 import 'package:shophub_project/presentation/components/search_history_component.dart';
 import 'package:shophub_project/presentation/components/trending_search_component.dart';
-import 'package:shophub_project/presentation/views/home_page.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({super.key});
@@ -15,6 +15,7 @@ class SearchWidget extends StatefulWidget {
 
 class _SearchWidgetState extends State<SearchWidget> {
   final TextEditingController controllerSearch = TextEditingController();
+  final SearchHistoryManager historyManager = SearchHistoryManager();
 
   List<String> allProductImages = [
     KProductImage.headset,
@@ -37,7 +38,6 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final heightScreen = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65),
@@ -58,36 +58,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                         setState(() {});
                       },
                       onEditingComplete: () {
-                        Navigator.pushReplacement(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder:
-                                (context, animation, secondaryAnimation) =>
-                                    WidgetTree(),
-                            transitionsBuilder:
-                                (
-                                  context,
-                                  animation,
-                                  secondaryAnimation,
-                                  child,
-                                ) {
-                                  // Slide dari bawah
-                                  const begin = Offset(0.0, 1.0);
-                                  const end = Offset.zero;
-                                  const curve = Curves.easeInOut;
-
-                                  var tween = Tween(
-                                    begin: begin,
-                                    end: end,
-                                  ).chain(CurveTween(curve: curve));
-
-                                  return SlideTransition(
-                                    position: animation.drive(tween),
-                                    child: child,
-                                  );
-                                },
-                          ),
-                        );
+                        // Tambah ke history menggunakan manager
+                        historyManager.addToHistory(controllerSearch.text);
                       },
                       decoration: InputDecoration(
                         hintText: 'Search',
@@ -110,6 +82,39 @@ class _SearchWidgetState extends State<SearchWidget> {
                           onPressed: () {
                             setState(() {
                               controllerSearch.clear();
+                              Navigator.pushReplacement(
+                                context,
+                                PageRouteBuilder(
+                                  pageBuilder:
+                                      (
+                                        context,
+                                        animation,
+                                        secondaryAnimation,
+                                      ) => WidgetTree(),
+                                  transitionsBuilder:
+                                      (
+                                        context,
+                                        animation,
+                                        secondaryAnimation,
+                                        child,
+                                      ) {
+                                        // Slide dari bawah
+                                        const begin = Offset(0.0, 1.0);
+                                        const end = Offset.zero;
+                                        const curve = Curves.easeInOut;
+
+                                        var tween = Tween(
+                                          begin: begin,
+                                          end: end,
+                                        ).chain(CurveTween(curve: curve));
+
+                                        return SlideTransition(
+                                          position: animation.drive(tween),
+                                          child: child,
+                                        );
+                                      },
+                                ),
+                              );
                             });
                           },
                           icon: Icon(
@@ -133,14 +138,23 @@ class _SearchWidgetState extends State<SearchWidget> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(
-                height: heightScreen * 0.22,
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) => SearchHistoryComponent(),
+              // History Search
+              if (historyManager.isNotEmpty)
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: historyManager.length,
+                  itemBuilder: (context, index) => SearchHistoryComponent(
+                    searchText: historyManager.getAt(index),
+                    onDelete: () {
+                      setState(() {
+                        historyManager.removeAt(index);
+                      });
+                    },
+                  ),
                 ),
-              ),
-              SizedBox(height: 24),
+
+              if (historyManager.isNotEmpty) SizedBox(height: 0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -168,6 +182,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ],
               ),
               SizedBox(height: 16),
+              // Last Seen
               SizedBox(
                 width: double.infinity,
                 height: 80,

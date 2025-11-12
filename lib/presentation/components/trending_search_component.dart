@@ -10,7 +10,7 @@ class TrendingSearchComponent extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(24), // Rounded
+        borderRadius: BorderRadius.circular(8), // Rounded
         border: Border.all(color: Colors.grey.shade300),
       ),
       child: Text('$name 🔥'),

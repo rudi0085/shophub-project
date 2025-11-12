@@ -3,19 +3,26 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shophub_project/data/constrant.dart';
 
 class SearchHistoryComponent extends StatelessWidget {
-  const SearchHistoryComponent({super.key});
+  const SearchHistoryComponent({
+    super.key,
+    required this.searchText,
+    this.onDelete,
+  });
+
+  final String searchText;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         children: [
           Icon(Iconsax.clock_copy, color: KColors.primary500),
           SizedBox(width: 12),
           Expanded(
             child: Text(
-              'Headpphone Wirelless',
+              searchText,
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 14,
@@ -24,7 +31,12 @@ class SearchHistoryComponent extends StatelessWidget {
               ),
             ),
           ),
-          Icon(Iconsax.close_square_copy, color: KColors.neutral300),
+          IconButton(
+            onPressed: onDelete,
+            icon: Icon(Iconsax.close_square_copy, color: KColors.neutral300),
+            padding: EdgeInsets.zero,
+            constraints: BoxConstraints(),
+          ),
         ],
       ),
     );
