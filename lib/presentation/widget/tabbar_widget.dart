@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shophub_project/data/constrant.dart';
 
-class TabbarWidget extends StatelessWidget {
+class TabbarWidget extends StatefulWidget {
   const TabbarWidget({super.key, required this.name, required this.asset});
 
   final String name;
   final String asset;
+
+  @override
+  State<TabbarWidget> createState() => _TabbarWidgetState();
+}
+
+class _TabbarWidgetState extends State<TabbarWidget> {
+  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     double widthScreen = MediaQuery.of(context).size.width;
@@ -23,13 +30,13 @@ class TabbarWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Image.asset(asset, fit: BoxFit.cover),
+                child: Image.asset(widget.asset, fit: BoxFit.cover),
               ),
               SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(name),
+                  Text(widget.name),
                   SizedBox(height: 4),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,7 +86,17 @@ class TabbarWidget extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Icon(Iconsax.heart, color: KColors.red),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              isFavorite = !isFavorite;
+                            });
+                          },
+                          child: Icon(
+                            isFavorite ? Iconsax.heart : Iconsax.heart,
+                            color: isFavorite ? Colors.red : KColors.neutral100,
+                          ),
+                        ),
                       ],
                     ),
                   ),
