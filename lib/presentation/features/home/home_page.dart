@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:shophub_project/data/constrant.dart';
+import 'package:shophub_project/presentation/components/category_component.dart';
 
 import 'package:shophub_project/presentation/widget/product_widget.dart';
 import 'package:shophub_project/presentation/widget/search_widget.dart';
@@ -28,6 +29,21 @@ class _HomePageState extends State<HomePage> {
     KProductImage.bluetoothHeadphone,
   ];
 
+  List<String> categoryImage = [
+    KCategoryImage.sneaker,
+    KCategoryImage.apparel,
+    KCategoryImage.watch,
+    KCategoryImage.joystick,
+    KCategoryImage.more,
+  ];
+  List<String> categorytitle = [
+    KCategoryTitle.sneakers,
+    KCategoryTitle.apparel,
+    KCategoryTitle.watch,
+    KCategoryTitle.joystick,
+    KCategoryTitle.more,
+  ];
+
   @override
   Widget build(BuildContext context) {
     double widthScreen = MediaQuery.of(context).size.width;
@@ -40,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         preferredSize: Size.fromHeight(65),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsetsGeometry.symmetric(vertical: 12, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             child: Row(
               children: [
                 Expanded(
@@ -230,103 +246,21 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(height: 16),
               // Categories
-              Row(
-                children: [
-                  // Every Category
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        SizedBox(
-                          child: Column(
-                            children: [
-                              // Sneakers
-                              Image.asset('assets/images/sneakers.png'),
-                              Text(
-                                'Sneakers',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // Apparel
-                        SizedBox(
-                          child: Column(
-                            children: [
-                              // 1
-                              Image.asset('assets/images/apparel.png'),
-                              Text(
-                                'Apparel',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // Watch
-                        SizedBox(
-                          child: Column(
-                            children: [
-                              // 1
-                              Image.asset('assets/images/watch.png'),
-                              Text(
-                                'Watch',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // JoyStick
-                        SizedBox(
-                          child: Column(
-                            children: [
-                              // 1
-                              Image.asset('assets/images/joystick.png'),
-                              Text(
-                                'Joy Stick',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // More
-                        SizedBox(
-                          child: Column(
-                            children: [
-                              // 1
-                              Image.asset('assets/images/more.png'),
-                              Text(
-                                'More',
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // 2
-                ],
+              SizedBox(
+                height: 70, // Berikan tinggi untuk horizontal ListView
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal, // Horizontal scroll
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(right: 12),
+                      child: CategoryComponent(
+                        asset: categoryImage.elementAt(index),
+                        name: categorytitle.elementAt(index),
+                      ),
+                    );
+                  },
+                ),
               ),
               SizedBox(height: 16),
               // Popular Product

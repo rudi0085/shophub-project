@@ -137,3 +137,19 @@ class KProductName {
   static const String bluetoothHeadphone = 'Bluetooth Headphone';
   static const String bluetoothHeadphoneBlack = 'Bluetooth Headphone Black';
 }
+
+class KCategoryImage {
+  static const String sneaker = 'assets/images/category/sneakers.png';
+  static const String apparel = 'assets/images/category/apparel.png';
+  static const String watch = 'assets/images/category/watch.png';
+  static const String joystick = 'assets/images/category/joystick.png';
+  static const String more = 'assets/images/category/more.png';
+}
+
+class KCategoryTitle {
+  static const String sneakers = 'Sneakers';
+  static const String apparel = 'Apparel';
+  static const String watch = 'Watches';
+  static const String joystick = 'Joy Stick';
+  static const String more = 'More';
+}

@@ -205,7 +205,7 @@ class Home2Page extends StatelessWidget {
                                       children: [
                                         // Sneakers
                                         Image.asset(
-                                          'assets/images/sneakers.png',
+                                          'assets/images/category/sneakers.png',
                                         ),
                                         Text(
                                           'Sneakers',
@@ -224,7 +224,7 @@ class Home2Page extends StatelessWidget {
                                       children: [
                                         // 1
                                         Image.asset(
-                                          'assets/images/apparel.png',
+                                          'assets/images/category/apparel.png',
                                         ),
                                         Text(
                                           'Apparel',
@@ -242,7 +242,9 @@ class Home2Page extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         // 1
-                                        Image.asset('assets/images/watch.png'),
+                                        Image.asset(
+                                          'assets/images/category/watch.png',
+                                        ),
                                         Text(
                                           'Watch',
                                           style: TextStyle(
@@ -260,7 +262,7 @@ class Home2Page extends StatelessWidget {
                                       children: [
                                         // 1
                                         Image.asset(
-                                          'assets/images/joystick.png',
+                                          'assets/images/category/joystick.png',
                                         ),
                                         Text(
                                           'Joy Stick',
@@ -278,7 +280,9 @@ class Home2Page extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         // 1
-                                        Image.asset('assets/images/more.png'),
+                                        Image.asset(
+                                          'assets/images/category/more.png',
+                                        ),
                                         Text(
                                           'More',
                                           style: TextStyle(
@@ -338,7 +342,7 @@ class Home2Page extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Image.asset(
-                                          'assets/images/headset.png',
+                                          'assets/images/products/headset.png',
                                         ),
                                         Text(
                                           'Headphone Nirkabel Extra Full Bass',
@@ -420,7 +424,7 @@ class Home2Page extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Image.asset(
-                                          'assets/images/bHeadphone.png',
+                                          'assets/images/products/bHeadphone.png',
                                         ),
                                         Text(
                                           'Bluetooth Headphone Wireless Earbud',
@@ -508,7 +512,7 @@ class Home2Page extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Image.asset(
-                                          'assets/images/headphoneWhite.png',
+                                          'assets/images/products/headphoneWhite.png',
                                         ),
                                         Text(
                                           'Headphone Nirkabel Extra Full Bass White',
@@ -590,7 +594,7 @@ class Home2Page extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Image.asset(
-                                          'assets/images/bluetoothblack.png',
+                                          'assets/images/products/bluetoothblack.png',
                                         ),
                                         Text(
                                           'Bluetooth Headphone Wireless Earbud',
