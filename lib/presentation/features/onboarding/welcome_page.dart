@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shophub_project/data/constrant.dart';
 import 'package:shophub_project/presentation/widget/welcom_widget.dart';
-import 'package:shophub_project/presentation/views/login_page.dart';
+import 'package:shophub_project/presentation/features/sign_in/login_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class WelcomePage extends StatefulWidget {

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shophub_project/app/mobile/auth_service.dart';
 import 'package:shophub_project/data/constrant.dart';
-import 'package:shophub_project/presentation/views/forgotpass_page.dart';
-import 'package:shophub_project/presentation/views/signup_page.dart.dart';
+import 'package:shophub_project/presentation/features/forgotpass/forgotpass_page.dart';
+import 'package:shophub_project/presentation/features/signup/signup_page.dart.dart';
 import 'package:shophub_project/presentation/widget/widget_tree.dart';
 
 class LoginPage extends StatefulWidget {
