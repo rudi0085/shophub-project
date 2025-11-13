@@ -107,15 +107,20 @@ class _Home3PageState extends State<Home3Page> {
       ),
       body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 118),
-            child: Container(color: KColors.white),
+          // Background 2 warna
+          Column(
+            children: [
+              Expanded(flex: 1, child: Container(color: KColors.primary500)),
+              Expanded(flex: 3, child: Container(color: KColors.white)),
+            ],
           ),
+          // CardWidget fixed di atas (tidak scroll)
+          Padding(padding: const EdgeInsets.all(16.0), child: CardWidget()),
+          // ListView yang bisa scroll
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.only(top: 200, left: 16, right: 16),
             child: ListView(
               children: [
-                CardWidget(),
                 SizedBox(
                   height: 160,
                   child: PageView(
@@ -176,6 +181,7 @@ class _Home3PageState extends State<Home3Page> {
                     ),
                   ],
                 ),
+                SizedBox(height: 8),
                 PopularProductWidget(),
               ],
             ),
