@@ -118,7 +118,7 @@ class _Home3PageState extends State<Home3Page> {
           Padding(padding: const EdgeInsets.all(16.0), child: CardWidget()),
           // ListView yang bisa scroll
           Padding(
-            padding: const EdgeInsets.only(top: 200, left: 16, right: 16),
+            padding: const EdgeInsets.only(top: 180, left: 16, right: 16),
             child: ListView(
               children: [
                 SizedBox(

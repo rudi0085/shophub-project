@@ -46,6 +46,7 @@ dependencies:
   iconsax_flutter: ^1.0.1
   sliding_up_panel: ^2.0.0+1
   flutter_launcher_icons: ^0.14.4
+  currency_text_input_formatter: ^2.1.10
  
   
   

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shophub_project/data/constrant.dart';
+import 'package:shophub_project/presentation/features/home/history_page.dart';
+import 'package:shophub_project/presentation/features/home/topup_page.dart';
+import 'package:shophub_project/presentation/features/home/transfer_page.dart';
 
 class CardWidget extends StatefulWidget {
   const CardWidget({super.key});
@@ -65,23 +68,56 @@ class _CardWidgetState extends State<CardWidget> {
             ),
 
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) {
+                                return TopupPage();
+                              },
+                        ),
+                      );
+                    },
                     child: CardIcon(
                       icon: Iconsax.wallet_add_1_copy,
                       name: 'Top Up',
                     ),
                   ),
                   InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) {
+                                return TransferPage();
+                              },
+                        ),
+                      );
+                    },
                     child: CardIcon(
                       icon: Iconsax.card_send_copy,
                       name: 'Transfer',
                     ),
                   ),
                   InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) {
+                                return HistoryPage();
+                              },
+                        ),
+                      );
+                    },
                     child: CardIcon(
                       icon: Iconsax.empty_wallet_tick_copy,
                       name: 'History',
@@ -142,7 +178,7 @@ class CardGraphic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 16),
       child: Card(
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
