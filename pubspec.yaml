@@ -84,6 +84,7 @@ flutter:
     - assets/images/icons/
     - assets/images/products/
     - assets/images/category/
+    - assets/images/card/
     - svg/
 
   #   - images/a_dot_ham.jpeg

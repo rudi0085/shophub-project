@@ -87,3 +87,59 @@ class ProductWidget extends StatelessWidget {
     );
   }
 }
+
+class PopularProductWidget extends StatelessWidget {
+  const PopularProductWidget({super.key});
+
+  static List<String> allProductNames = [
+    KProductName.headset,
+    KProductName.headphoneWhite,
+    KProductName.bluetoothHeadphoneBlack,
+    KProductName.bluetoothHeadphone,
+  ];
+
+  static List<String> allProductImages = [
+    KProductImage.headset,
+    KProductImage.headphoneWhite,
+    KProductImage.bluetoothHeadphoneBlack,
+    KProductImage.bluetoothHeadphone,
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: (allProductNames.length / 2).ceil(),
+      itemBuilder: (context, index) {
+        int firstIndex = index * 2;
+        int secondIndex = firstIndex + 1;
+
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: ProductWidget(
+                  productImage: allProductImages[firstIndex],
+                  productName: allProductNames[firstIndex],
+                ),
+              ),
+              if (secondIndex < allProductNames.length) ...[
+                SizedBox(width: 16),
+                Expanded(
+                  child: ProductWidget(
+                    productImage: allProductImages[secondIndex],
+                    productName: allProductNames[secondIndex],
+                  ),
+                ),
+              ] else
+                Expanded(child: SizedBox()),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

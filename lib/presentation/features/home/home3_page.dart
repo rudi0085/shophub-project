@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:shophub_project/data/constrant.dart';
 import 'package:shophub_project/presentation/widget/card_widget.dart';
+import 'package:shophub_project/presentation/widget/product_widget.dart';
 import 'package:shophub_project/presentation/widget/search_widget.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home3Page extends StatefulWidget {
   const Home3Page({super.key});
@@ -12,6 +14,7 @@ class Home3Page extends StatefulWidget {
 }
 
 class _Home3PageState extends State<Home3Page> {
+  final _controller = PageController(viewportFraction: 1.0);
   TextEditingController controllerSearch = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -110,7 +113,72 @@ class _Home3PageState extends State<Home3Page> {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(children: [CardWidget(), CardGraphic()]),
+            child: ListView(
+              children: [
+                CardWidget(),
+                SizedBox(
+                  height: 160,
+                  child: PageView(
+                    physics: BouncingScrollPhysics(),
+                    controller: _controller,
+                    scrollDirection: Axis.horizontal,
+                    reverse: false,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: CardGraphic(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: CardGraphic(),
+                      ),
+                      CardGraphic(),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 8),
+                Center(
+                  child: SmoothPageIndicator(
+                    controller: _controller,
+                    count: 3,
+
+                    effect: ExpandingDotsEffect(
+                      dotHeight: 6,
+                      dotWidth: 6,
+                      dotColor: KColors.neutral100,
+                      activeDotColor: KColors.primary500,
+                      expansionFactor: 5,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Popular Product',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    GestureDetector(
+                      child: Text(
+                        'See All',
+                        style: TextStyle(
+                          color: KColors.primary500,
+                          fontFamily: 'Poppins',
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                PopularProductWidget(),
+              ],
+            ),
           ),
         ],
       ),

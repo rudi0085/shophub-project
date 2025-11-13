@@ -146,24 +146,97 @@ class CardGraphic extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        child: Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              height: 140,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF9A37EC),
-                    Color(0xFF9E39ED).withOpacity(0.8),
-                  ],
-                  begin: AlignmentGeometry.centerLeft,
-                  end: AlignmentGeometry.centerRight,
-                ),
-                borderRadius: BorderRadius.circular(16),
-              ),
+        child: Container(
+          width: double.infinity,
+          height: 140,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF9A37EC), Color(0xFF9E39ED).withOpacity(0.8)],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
             ),
-          ],
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                  ),
+                  child: Image.asset(
+                    'assets/images/card/ornament.png',
+                    scale: 0.9,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Positioned(
+                right: 4,
+                child: Image.asset('assets/images/card/discount1.png'),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 20,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Unlock Daily Vouchers for Endless Savings!',
+                      style: TextStyle(
+                        color: KColors.white,
+                        fontFamily: 'Poppins',
+                        fontSize: 10,
+                        height: 1.5,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0,
+                      ),
+                    ),
+                    Text(
+                      'Get Voucher Every Day',
+                      style: TextStyle(
+                        color: KColors.white,
+                        fontFamily: 'Poppins',
+                        fontSize: 14,
+                        height: 1.5,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0,
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    FilledButton(
+                      onPressed: () {},
+
+                      style: FilledButton.styleFrom(
+                        backgroundColor: KColors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: Text(
+                        'Get Started',
+                        style: TextStyle(
+                          color: KColors.primary500,
+                          fontFamily: 'Poppins',
+                          fontSize: 14,
+                          height: 1.5,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
