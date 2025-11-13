@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shophub_project/data/constrant.dart';
 import 'package:shophub_project/data/notifiers.dart';
+import 'package:shophub_project/presentation/features/home/home3_page.dart';
 
-import 'package:shophub_project/presentation/features/home/home_page.dart';
 import 'package:shophub_project/presentation/features/message/message_page.dart';
 import 'package:shophub_project/presentation/features/profile/profile_page.dart';
 import 'package:shophub_project/presentation/features/whistlist/whistlist_page.dart';
 import 'package:shophub_project/presentation/widget/navbar_widget.dart';
 
 List<Widget> pages = [
-  HomePage(),
+  Home3Page(),
   WhistlistPage(),
   MessagePage(),
   ProfilePage(),
