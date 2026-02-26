@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
-        errorMessage = e.message ?? 'This is not working';
+        errorMessage = e.message ?? 'This is not working from Firebase';
       });
     }
   }
